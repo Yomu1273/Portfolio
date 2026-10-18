@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Yogesh Munees" />
+    <meta name="theme-color" content="#07080b" />
+    <!--head-->
+    <title>Yogesh Munees | Full-Stack Software Engineer — React, .NET &amp; Applied AI</title>
+    <meta
+      name="description"
+      content="Yogesh Munees, Software Engineer II in Chennai. Full-stack engineer for enterprise React and .NET platforms, performance-sensitive APIs, and applied-AI workflows."
+    />
+    <meta property="og:title" content="Yogesh Munees | Full-Stack Software Engineer — React, .NET &amp; Applied AI" />
+    <meta
+      property="og:description"
+      content="Full-stack engineer in Chennai. Architecture, search performance, release ownership, and applied AI, each with a number and a page."
+    />
+    <meta property="og:type" content="website" />
+    <!--/head-->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <script>
+      if (location.pathname !== '/' && !location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
+        location.replace(location.pathname + '/' + location.search + location.hash)
+      }
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var moduleScript = document.querySelector('script[type="module"]')
+        var base = ''
+        if (moduleScript) {
+          var src = new URL(moduleScript.getAttribute('src'), location.href)
+          var at = src.pathname.indexOf('/assets/')
+          if (at > 0) base = src.pathname.slice(0, at)
+        }
+        var canonical = location.origin + location.pathname
+        var image = location.origin + base + '/og.png'
+        function ensureLink(rel) {
+          var el = document.querySelector('link[rel="' + rel + '"]')
+          if (!el) {
+            el = document.createElement('link')
+            el.rel = rel
+            document.head.appendChild(el)
+          }
+          return el
+        }
+        function ensureMeta(prop) {
+          var el = document.querySelector('meta[property="' + prop + '"]')
+          if (!el) {
+            el = document.createElement('meta')
+            el.setAttribute('property', prop)
+            document.head.appendChild(el)
+          }
+          return el
+        }
+        ensureLink('canonical').href = canonical
+        ensureMeta('og:url').setAttribute('content', canonical)
+        ensureMeta('og:image').setAttribute('content', image)
+      })()
+    </script>
+  </body>
+</html>
