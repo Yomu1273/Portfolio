@@ -65,7 +65,7 @@ const remember = (id: string) => {
   return seen
 }
 
-function WorldLive() {
+export function World() {
   const stageRef = useRef<HTMLDivElement>(null)
   const worldRef = useRef<HTMLDivElement>(null)
   const walkerRef = useRef<HTMLDivElement>(null)
@@ -76,7 +76,6 @@ function WorldLive() {
   const posRef = useRef<Point>(startPoint())
   const velRef = useRef<Point>({ x: 0, y: 0 })
   const camRef = useRef<Point>(startCamera())
-  const scaleRef = useRef(1)
   const destRef = useRef<Point | null>(null)
   const stickRef = useRef<Stick>({ x: 0, y: 0, on: false })
   const keysRef = useRef<Set<string>>(new Set())
@@ -98,10 +97,9 @@ function WorldLive() {
     const view = stage.getBoundingClientRect()
     const pos = posRef.current
     const cam = camRef.current
-    const scale = 1
-    const shiftX = view.width / 2 - cam.x * scale
-    const shiftY = view.height / 2 - cam.y * scale
-    world.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scale})`
+    const shiftX = view.width / 2 - cam.x
+    const shiftY = view.height / 2 - cam.y
+    world.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0)`
     if (farRef.current) farRef.current.style.transform = `translate3d(${shiftX * 0.22}px, ${shiftY * 0.22}px, 0)`
     if (lampRef.current) lampRef.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`
     walker.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`
@@ -178,17 +176,13 @@ function WorldLive() {
       const walker = walkerRef.current
       if (stage && world && walker) {
         const view = stage.getBoundingClientRect()
-        const wanted = 1
-        const zoom = reduceRef.current ? 1 : 1 - Math.exp(-3.2 * dt)
-        scaleRef.current += (wanted - scaleRef.current) * zoom
-        const scale = scaleRef.current
         const bias = pausedRef.current && view.width >= 900 ? Math.min(280, view.width * 0.2) : 0
         const follow = reduceRef.current ? 1 : 1 - Math.exp(-6 * dt)
         camRef.current.x += (pos.x + bias - camRef.current.x) * follow
         camRef.current.y += (pos.y - LOOK_AHEAD - camRef.current.y) * follow
-        const shiftX = view.width / 2 - camRef.current.x * scale
-        const shiftY = view.height / 2 - camRef.current.y * scale
-        world.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scale})`
+        const shiftX = view.width / 2 - camRef.current.x
+        const shiftY = view.height / 2 - camRef.current.y
+        world.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0)`
         if (farRef.current) farRef.current.style.transform = `translate3d(${shiftX * 0.22}px, ${shiftY * 0.22}px, 0)`
         if (lampRef.current) lampRef.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`
         if (nameRef.current) {
@@ -470,8 +464,4 @@ function Joystick({ stickRef }: { stickRef: { current: Stick } }) {
       <div className="stick-nub" ref={nubRef} />
     </div>
   )
-}
-
-export function World() {
-  return <WorldLive />
 }

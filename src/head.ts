@@ -1,4 +1,4 @@
-import { NODES, PROFILE, findNode } from './data.ts'
+import { PROFILE, findNode } from './data.ts'
 import { parsePath } from './route.tsx'
 
 const HOME_TITLE = 'Yogesh Munees | Full-Stack Software Engineer — React, .NET & Applied AI'
@@ -71,12 +71,10 @@ export function headMarkup(pathname: string, origin = ''): string {
   ].filter(Boolean).join('\n    ')
 }
 
-export function escapeHtml(value: string): string {
+function escapeHtml(value: string): string {
   return value
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
 }
-
-export const INDEXABLE_PATHS = ['/', '/work/', '/about/', '/resume/', '/explore/', '/map/', ...NODES.map((node) => `/${node.path}/`)]

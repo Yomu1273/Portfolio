@@ -211,11 +211,7 @@ export function Resume() {
       <h1>{PROFILE.name}</h1>
       <p className="role-line">{PROFILE.role} · Full-stack engineering · AI-enabled applications</p>
       <p className="lede">{PROFILE.positioning}</p>
-      <ul className="links-out">
-        <li><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a></li>
-        <li><a href={PROFILE.linkedin}>LinkedIn</a></li>
-        <li><a href={PROFILE.github}>GitHub</a></li>
-      </ul>
+      <ContactLinks />
       <h2>Experience</h2>
       {EXPERIENCE.map((role) => (
         <section key={role.dates} className="role">

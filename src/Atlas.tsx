@@ -34,7 +34,7 @@ function edgePoint(box: Box, towardX: number, towardY: number): { x: number; y: 
   return { x: cx + dx * scale, y: cy + dy * scale }
 }
 
-export function isQuiet(id: string, facet: Facet | 'all', query: string): boolean {
+function isQuiet(id: string, facet: Facet | 'all', query: string): boolean {
   const node = NODES.find((item) => item.id === id)
   if (!node) return true
   if (facet !== 'all' && node.facet !== facet) return true

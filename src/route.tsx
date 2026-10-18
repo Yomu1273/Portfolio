@@ -115,7 +115,7 @@ export function navigate(to: string, mode: 'push' | 'replace' = 'push'): void {
   jumpTop()
 }
 
-export function relativeHref(from: string, to: string): string {
+function relativeHref(from: string, to: string): string {
   const fromDir = canonicalPath(from).split('/').filter(Boolean)
   const toParts = canonicalPath(to).split('/').filter(Boolean)
   let shared = 0
@@ -125,17 +125,11 @@ export function relativeHref(from: string, to: string): string {
   return `${parts.join('/')}/`
 }
 
-export function relativeAsset(from: string, file: string): string {
-  const depth = canonicalPath(from).split('/').filter(Boolean).length
-  return `${'../'.repeat(depth)}${file}`
-}
-
-export function useRoute(initialPath?: string): Route {
+function useRoute(initialPath?: string): Route {
   const [route, setRoute] = useState<Route>(() => (initialPath !== undefined ? parsePath(initialPath) : parseLocation()))
   const routeRef = useRef(route)
   routeRef.current = route
   useEffect(() => {
-    document.documentElement.dataset.booted = '1'
     const sync = () => {
       const next = parseLocation()
       if (routeKey(next) === routeKey(routeRef.current)) return

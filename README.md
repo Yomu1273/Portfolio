@@ -1,38 +1,15 @@
 # Yogesh Munees
 
-A static portfolio. The site opens on the yard: nine pieces of work you can walk. Quick glance opens the résumé. Overview, work, and about are ordinary pages. On a phone, use the stick. On a desktop, click the ground or use WASD.
+I am a software engineer in Chennai. I build full-stack enterprise platforms and the tools around them: React, .NET, Python, PostgreSQL, and applied AI, with the architecture written down so someone else can change it.
 
-There is no server, database, account, or analytics call.
+I am Software Engineer II at Trimble. A proof of concept I originated became the in-house platform that replaced a vendor product, and I led its frontend architecture, standards, and release delivery. Ten workflows shipped in two weeks on a configuration-driven React architecture. Staging search went from about 2.5 seconds to 17 ms. About 400 findings were cleared before a release. An issue recommender I evaluated reached 92%, and a draft pull request still stops for a person.
 
-## Develop
+Before Trimble I finished a B.E. in Computer Science and Engineering at SSN College of Engineering, First Class with Distinction, CGPA 9.1. I was school topper in CBSE Class XII at SKV Vidhyashram, 485/500. In 2022 I co-authored a CLEF working note on fusing web-search systems. From 2023 to 2024 I was president of the SSN student body.
 
-```bash
-npm install
-npm run dev
-```
+Outside the job I write and co-release songs, including [Maaya Dhevadhaiye](https://distrokid.com/hyperfollow/vikashanandsyogeshmunees/maaya-dhevadhaiye-feat-sridharan-kumaran--bavashri) with Vikash Anand S, featuring Sridharan Kumaran and Bavashri. I also make short films, edit video, take photographs, and dance. I skate, play football and cricket, and play chess. I read, watch cinema and anime, and still pick up a Rubik’s cube.
 
-```bash
-npm run build
-npm run preview
-```
+The portfolio is the walk through that work: [yomu1273.github.io/Portfolio](https://yomu1273.github.io/Portfolio/).
 
-The production build is the `dist` folder. It prerenders each page to its own `index.html`, so the résumé, work, and about pages are readable without JavaScript.
-
-Set `VITE_SITE_URL` to the public origin, with no trailing slash, before `npm run build` when you want absolute canonical URLs, Open Graph URLs, and a sitemap. Example: `VITE_SITE_URL=https://example.com`. Without it, a small script fills those tags from the address the visitor actually loaded.
-
-## Host it for free
-
-Cloudflare Pages is the primary target: unlimited static bandwidth and requests on the free plan, with nothing to keep running.
-
-1. Push this repository to GitHub.
-2. In Cloudflare Pages, create a project from the repository.
-3. Build command: `npm run build`
-4. Output directory: `dist`
-
-GitHub Pages is the fallback. The workflow in `.github/workflows/pages.yml` publishes `dist` on every push to `main`. In the repository settings, set Pages to deploy from GitHub Actions.
-
-A `*.pages.dev` or `*.github.io` address stays inside the free tier. A custom domain is optional and usually has a yearly registration fee.
-
-## What stays out of the hosted site
-
-Employer work is described at the level of a résumé: no customer names, source, schemas, or internal addresses. The phone number is omitted. There is no résumé download. The sign-language studio explains the pipeline and does not invent signs. Certification links open the public credential pages; the two Google Drive files have to be shared so anyone with the link can view them.
+- [yogeshmunees@gmail.com](mailto:yogeshmunees@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/yogesh-munees-130354196)
+- [GitHub](https://github.com/Yomu1273)

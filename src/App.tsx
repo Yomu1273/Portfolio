@@ -49,17 +49,19 @@ function fallbackMotion(): boolean {
   return !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
+function setMeta(selector: string, value: string): void {
+  const node = document.querySelector(selector)
+  if (node) node.setAttribute('content', value)
+}
+
 function HeadSync() {
   const route = useCurrentRoute()
   useEffect(() => {
     const meta = pageMeta(routePath(route))
     document.title = meta.title
-    const description = document.querySelector('meta[name="description"]')
-    if (description) description.setAttribute('content', meta.description)
-    const ogTitle = document.querySelector('meta[property="og:title"]')
-    if (ogTitle) ogTitle.setAttribute('content', meta.title)
-    const ogDescription = document.querySelector('meta[property="og:description"]')
-    if (ogDescription) ogDescription.setAttribute('content', meta.description)
+    setMeta('meta[name="description"]', meta.description)
+    setMeta('meta[property="og:title"]', meta.title)
+    setMeta('meta[property="og:description"]', meta.description)
     const canonicalUrl = `${location.origin}${absolutePath(routePath(route))}`
     let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonical) {
